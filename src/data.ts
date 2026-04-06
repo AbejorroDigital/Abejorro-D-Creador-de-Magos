@@ -1,3 +1,7 @@
+/**
+ * Lista de trasfondos disponibles para el personaje.
+ * Cada trasfondo incluye bonificadores de características, habilidades, una dote inicial y equipo.
+ */
 export const backgrounds = [
   {
     name: "Erudito (Sage)",
@@ -22,6 +26,9 @@ export const backgrounds = [
   }
 ];
 
+/**
+ * Lista de Dotes de Origen (Origin Feats) disponibles en las reglas de 2024.
+ */
 export const originFeats = [
   "Alerta (+PB a Iniciativa, intercambiar iniciativa)",
   "Artesano (Competencia con 3 herramientas, descuento del 20% en equipo, creación rápida)",
@@ -37,6 +44,10 @@ export const originFeats = [
   "Resistente (+2 PG por nivel de personaje)"
 ];
 
+/**
+ * Diccionario de conjuros de mago organizados por nivel (0 al 9).
+ * El nivel 0 corresponde a los Trucos (Cantrips).
+ */
 export const wizardSpellsByLevel: Record<number, string[]> = {
   0: ["Descarga de Fuego", "Rayo de Escarcha", "Ilusión Menor", "Mano de Mago", "Prestidigitación", "Luz", "Mensaje", "Agarre Electrizante", "Salpicadura Ácida", "Rociada Venenosa", "Impacto Certero", "Toque Helado", "Reparar", "Protección contra Armas", "Crear Hoguera", "Congelación", "Romper la Mente", "Atronar", "Rayo Relampagueante"],
   1: ["Proyectil Mágico", "Escudo", "Armadura de Mago", "Dormir", "Detectar Magia", "Identificar", "Caída de Pluma", "Manos Ardientes", "Hechizar Persona", "Comprensión Idiomática", "Grasa", "Rayo de Hechicería", "Falsa Vida", "Sirviente Invisible", "Alarma", "Encontrar Familiar", "Nube de Oscurecimiento", "Salto", "Zancada Prodigiosa", "Onda Truenosa", "Orbe Cromático", "Rayo de Enfermedad", "Disfrazarse", "Ilusión Silenciosa", "Texto Ilusorio", "Caída Suave"],
@@ -50,6 +61,10 @@ export const wizardSpellsByLevel: Record<number, string[]> = {
   9: ["Deseo", "Palabra de Poder: Matar", "Enjambre de Meteoritos", "Detener el Tiempo", "Polimorfar Verdadero", "Presagio", "Prisión", "Proyección Astral", "Cambio de Forma", "Muro Prismático", "Puerta", "Invulnerabilidad", "Metamorfosis Verdadera"]
 };
 
+/**
+ * Progresión de espacios de conjuro (Spell Slots) por nivel de Mago.
+ * La clave es el nivel del personaje, el valor es un arreglo con los espacios disponibles por nivel de conjuro (1 al 9).
+ */
 export const wizardSpellSlots: Record<number, number[]> = {
   // Nivel de Mago: [Espacios Nivel 1, Nivel 2, ..., Nivel 9]
   1: [2, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -74,12 +89,18 @@ export const wizardSpellSlots: Record<number, number[]> = {
   20: [4, 3, 3, 3, 3, 2, 2, 1, 1],
 };
 
+/**
+ * Cantidad de Trucos (Cantrips) conocidos por nivel de Mago.
+ */
 export const wizardCantripsKnown: Record<number, number> = {
   1: 3, 2: 3, 3: 3,
   4: 4, 5: 4, 6: 4, 7: 4, 8: 4, 9: 4,
   10: 5, 11: 5, 12: 5, 13: 5, 14: 5, 15: 5, 16: 5, 17: 5, 18: 5, 19: 5, 20: 5
 };
 
+/**
+ * Lista de rasgos de personalidad aleatorios para la generación del personaje.
+ */
 export const personalityTraits = [
   "Uso palabras polisilábicas para dar la impresión de gran erudición.",
   "He leído todos los libros de la biblioteca más grande de mi ciudad natal.",
@@ -141,38 +162,26 @@ export const flaws = [
 ];
 
 export const backstories = [
-  "Pasé mi juventud encerrado en los archivos de una gran biblioteca, estudiando tomos polvorientos. Un día descubrí un grimorio oculto que despertó mi chispa mágica. Ahora busco el conocimiento que los libros no pueden enseñar.",
-  "Fui aprendiz de un mago excéntrico que desapareció misteriosamente. Me dejó su libro de conjuros y una extraña advertencia. Viajo para descubrir qué le sucedió y dominar las artes arcanas.",
-  "Nacido en una familia de eruditos, siempre se esperó que siguiera una vida académica. Sin embargo, mi fascinación por la magia destructiva me llevó a abandonar la academia y buscar el poder práctico en el mundo real.",
-  "Fui un escriba humilde en un monasterio hasta que un pergamino prohibido me habló en sueños. Al leerlo, mi mente se abrió a la magia arcana, pero también me expulsaron por herejía.",
-  "Crecí en las calles y sobreviví robando, hasta que le robé un libro a un mago anciano. En lugar de castigarme, vio mi potencial y me tomó como su aprendiz.",
-  "Mi aldea fue destruida por una criatura mágica. Juré aprender los secretos de la magia para asegurarme de que nadie más sufra la misma impotencia que yo sentí.",
-  "Fui un soldado que presenció cómo un solo mago diezmaba a todo mi batallón. Deserté y dediqué mi vida a comprender y dominar ese poder abrumador.",
-  "Provengo de un largo linaje de hechiceros innatos, pero yo nací sin magia. Desesperado por probar mi valía, estudié día y noche hasta forzar a la magia a obedecerme mediante fórmulas y estudio.",
-  "Encontré un artefacto antiguo en unas ruinas cerca de mi hogar. El artefacto me susurra secretos arcanos a cambio de que lo lleve a su lugar de origen.",
-  "Fui el bufón de una corte noble, usando trucos de prestidigitación baratos. Un día, un truco salió demasiado bien y conjuré fuego real. Tuve que huir antes de ser ejecutado por brujería.",
-  "Trabajaba como cartógrafo delineando zonas de magia salvaje. La exposición constante alteró mi mente, permitiéndome ver los hilos de la urdimbre mágica y manipularlos.",
-  "Mi hermano gemelo era el prodigio mágico de la familia, pero murió en un experimento fallido. Tomé su libro de conjuros y su identidad para continuar su obra y honrar su memoria.",
-  "Hice un trato con una entidad de otro plano para salvar mi vida, pero en lugar de convertirme en brujo, me dio un libro y me dijo: 'Aprende o muere'.",
-  "Fui un alquimista fracasado cuyas pociones siempre explotaban. Descubrí que mis explosiones no eran mala química, sino magia latente que se manifestaba de forma inestable.",
-  "Sufrí una extraña enfermedad en mi infancia que me dejó postrado en cama durante años. Mi única compañía fueron los libros de magia de mi abuelo, los cuales memoricé por completo.",
-  "Era un astrónomo real que descubrió un patrón en las estrellas que formaba un conjuro de nivel cósmico. Fui tachado de loco y exiliado, pero sé que tengo razón.",
-  "Fui criado por elfos tras quedar huérfano. Aunque mi vida humana es corta, me esforcé el triple para igualar su dominio de la alta magia, ganándome su respeto a regañadientes.",
-  "Descubrí que el mundo es una ilusión creada por dioses aburridos. La magia es la única forma de 'hackear' las reglas de esta realidad y planeo liberarnos a todos.",
-  "Trabajé como sepulturero en una ciudad asolada por la plaga. Encontré un libro de nigromancia en la tumba de un noble y comencé a estudiar para entender la línea entre la vida y la muerte.",
-  "Fui un mercader exitoso hasta que un rival me arruinó usando magia de encantamiento. Lo perdí todo y juré aprender magia para que nadie vuelva a manipular mi mente.",
-  "Nací durante una conjunción astral extremadamente rara. Los magos locales me acogieron creyendo que soy la reencarnación de un archimago legendario, una expectativa que me asfixia.",
-  "Era un investigador de la guardia de la ciudad. Me di cuenta de que los crímenes mágicos solo pueden ser resueltos por alguien que entienda la magia, así que me convertí en mago para atrapar a los peores criminales.",
-  "Encontré un libro de conjuros en el vientre de un monstruo marino que pesqué. Sus páginas estaban intactas y escritas en un idioma que aprendí a descifrar en mis largas noches en el mar.",
-  "Fui un esclavo en una mina de cristales arcanos. La resonancia de los cristales me enseñó los fundamentos de la magia, permitiéndome orquestar una rebelión y escapar.",
-  "Soy un noble aburrido de la política de la corte. La magia es el único desafío intelectual que me resulta estimulante, aunque mi familia lo considera un pasatiempo peligroso y plebeyo.",
-  "Fui maldecido por una bruja para no poder decir mentiras. Descubrí que el lenguaje de la magia es la verdad absoluta del universo, y es el único idioma en el que me siento cómodo.",
-  "Trabajaba como restaurador de arte antiguo. Al limpiar un fresco en unas ruinas, revelé un círculo de teletransportación que me envió al otro lado del mundo con solo un libro de hechizos roto.",
-  "Mi sombra tiene vida propia y a veces lanza conjuros por su cuenta. Me convertí en mago para aprender a controlarla antes de que lastime a alguien que amo.",
-  "Fui un músico prodigio, pero perdí la audición en un accidente. Descubrí que puedo 'escuchar' la magia como si fuera música, y ahora compongo sinfonías arcanas.",
-  "Desperté en un cráter sin recuerdos de quién soy, sosteniendo un bastón humeante y un libro de conjuros con mi nombre en la portada. Viajo para descubrir mi pasado."
+  "Pasé mi juventud encerrado en los polvorientos archivos de la Gran Biblioteca de Candelero, catalogando tomos olvidados por siglos. Mi vida era monótona hasta que, tras un muro falso, descubrí un grimorio encuadernado en escamas iridiscentes. Al abrirlo, las palabras no solo se leían, sino que resonaban en mi mente, despertando una chispa mágica latente. El tomo me mostró visiones de una calamidad inminente y de conocimientos que la academia prohíbe enseñar. Ahora, he abandonado la seguridad de los archivos, buscando dominar estas artes arcanas prohibidas para evitar el desastre que vi, aunque los eruditos de mi orden me consideren un hereje peligroso.",
+  "Fui el aprendiz más prometedor del excéntrico archimago Vaelen, un hombre brillante pero obsesionado con los planos exteriores. Una noche, un experimento con un portal salió terriblemente mal; el laboratorio quedó envuelto en llamas arcanas y Vaelen desapareció sin dejar rastro, dejando atrás solo su diario encriptado y su bastón astillado. Las autoridades mágicas me culpan de su desaparición, obligándome a huir. Viajo por el mundo descifrando los crípticos mensajes de su diario, aprendiendo magia sobre la marcha y buscando la forma de reabrir el portal para rescatarlo, o al menos, limpiar mi nombre.",
+  "Nacido en el seno de una noble familia de eruditos y diplomáticos, siempre se esperó que yo siguiera el camino de la política y la sutileza. Sin embargo, desde niño sentí una fascinación incontrolable por el poder bruto y destructivo de la magia de evocación. Mis experimentos secretos casi reducen a cenizas la finca familiar, lo que provocó mi exilio deshonroso. Ahora, despojado de mi título y riqueza, busco el poder práctico y abrumador en el mundo real. Quiero demostrar a mi familia que la verdadera autoridad no reside en las palabras o en la sangre, sino en la capacidad de moldear la realidad a través del fuego y el relámpago.",
+  "Fui un escriba humilde y devoto en un monasterio aislado, dedicado a copiar textos sagrados. Mi fe era inquebrantable hasta que me asignaron la tarea de transcribir un pergamino hereje confiscado a un cultista. Al trazar las runas, la magia arcana fluyó a través de mi pluma, llenando mi mente de verdades cósmicas que contradecían las enseñanzas de mi orden. Fui descubierto practicando estos hechizos y excomulgado de inmediato, marcado como un paria. Ahora vago por el mundo, dividido entre la culpa de mi fe perdida y la embriagadora libertad de la magia arcana, buscando comprender la verdadera naturaleza del universo.",
+  "Crecí en las implacables calles de la capital, sobreviviendo a base de robos rápidos y engaños. Un día, le robé una bolsa pesada a un anciano despistado, esperando encontrar oro, pero solo hallé un libro de conjuros pesado y complejo. Al intentar venderlo, el anciano me encontró. En lugar de entregarme a la guardia, vio cómo yo había logrado descifrar instintivamente un truco básico de sus páginas. Me tomó como su aprendiz, sacándome de la miseria. Tras su reciente y pacífica muerte, heredé su grimorio. Ahora aventuro para honrar su memoria y demostrar que un huérfano de la calle puede convertirse en el mago más grande de la era.",
+  "Mi aldea natal era un lugar pacífico hasta que fue arrasada por una quimera enloquecida por magia salvaje. Vi cómo las espadas y las flechas de nuestra milicia rebotaban inútilmente contra la bestia. Sobreviví escondido bajo los escombros, sintiendo una impotencia que me carcome hasta el día de hoy. Juré sobre las cenizas de mi hogar que nunca volvería a ser débil. He dedicado cada hora de vigilia a desentrañar los secretos de la magia, estudiando con una intensidad febril. Mi objetivo no es solo la venganza, sino adquirir el poder absoluto para proteger a los inocentes y destruir cualquier amenaza sobrenatural que ose cruzar mi camino.",
+  "Fui un soldado leal, un veterano de innumerables escaramuzas fronterizas. Creía en la fuerza del acero y la disciplina, hasta la Batalla del Valle Rojo. Allí presencié cómo un solo mago enemigo, con un simple gesto y unas palabras arcanas, diezmaba a todo mi batallón con una tormenta de fuego. Sobreviví de milagro, pero mi fe en el combate tradicional se hizo añicos. Deserté esa misma noche, robando un libro de tácticas arcanas del campamento enemigo. He cambiado mi espada por un bastón, dedicando mi vida a comprender y dominar ese poder abrumador, sabiendo que en el campo de batalla moderno, la magia es la única verdadera artillería.",
+  "Provengo de un largo y orgulloso linaje de hechiceros innatos, seres que respiran magia como otros respiran aire. Sin embargo, yo nací 'vacío', sin una gota de magia en mi sangre, una vergüenza para mi familia. Desesperado por probar mi valía y no ser relegado al olvido, me sumergí en el estudio académico de la magia. Lo que a ellos les resulta natural, yo lo he tenido que forzar a través de complejas fórmulas matemáticas, memorización exhaustiva y pura fuerza de voluntad. He logrado doblegar la urdimbre mágica a mi intelecto, y ahora viajo para demostrar que la dedicación y el estudio pueden superar cualquier don de nacimiento.",
+  "Durante una expedición arqueológica en unas ruinas pre-cataclísmicas, encontré un extraño artefacto: un orbe de cristal oscuro que latía con una luz interior. Desde el momento en que lo toqué, comenzó a susurrarme en sueños, enseñándome fórmulas arcanas olvidadas hace milenios y revelándome secretos sobre la estructura del multiverso. El artefacto me ha otorgado poder, pero a un precio: exige que lo lleve a su lugar de origen, un templo perdido en el otro extremo del continente. Me he convertido en un mago no por elección, sino por la influencia de esta reliquia, y temo lo que sucederá cuando finalmente cumpla su exigencia.",
+  "Fui el bufón principal en la corte del Duque, ganándome la vida con malabares, chistes y trucos de prestidigitación baratos con pólvora y espejos. Un día, intentando impresionar a un embajador elfo, pronuncié unas palabras sin sentido que había escuchado de un mago callejero. Para mi horror, el truco salió demasiado bien: conjuré una esfera de fuego real que incendió las cortinas y casi mata al Duque. Tuve que huir del castillo en medio de la noche antes de ser ejecutado por brujería e intento de asesinato. Ahora, me veo obligado a aprender magia de verdad para sobrevivir como aventurero, huyendo constantemente de los cazarrecompensas del Duque.",
+  "Trabajaba como cartógrafo para el Gremio de Exploradores, especializándome en delinear zonas de magia salvaje y anomalías arcanas. Años de exposición constante a estas energías inestables alteraron mi mente y mi percepción. Empecé a ver los hilos luminosos de la urdimbre mágica flotando en el aire. Con el tiempo, aprendí a tirar de esos hilos, manipulando la realidad a mi alrededor. Mi gremio me consideró inestable y me despidió. Ahora, viajo por el mundo no para hacer mapas, sino para estudiar las corrientes mágicas del mundo, buscando comprender la extraña mutación que me ha convertido en un conducto para las artes arcanas.",
+  "Mi hermano gemelo era el prodigio mágico de la familia, destinado a convertirse en un archimago, mientras yo era solo su sombra, un simple ayudante de laboratorio. Una noche, un experimento de invocación salió mal y una entidad de las sombras lo consumió. Consumido por el dolor y la culpa por no haber podido salvarlo, tomé su libro de conjuros, sus túnicas y su identidad. He pasado años estudiando frenéticamente para imitar sus habilidades, engañando a nuestra familia y a la academia. Soy un fraude que vive la vida de un muerto, pero estoy decidido a dominar la magia para encontrar a la entidad que lo mató y destruirla.",
+  "Acorralado por una manada de lobos invernales en las montañas, hice un trato desesperado con una entidad de otro plano para salvar mi vida. Esperaba convertirme en un brujo, atado a su voluntad, pero la entidad fue caprichosa. En lugar de poder directo, hizo aparecer un grueso grimorio en mis manos y una voz en mi cabeza dijo: 'Aprende o muere'. Los lobos se retiraron, pero la entidad me observa. Me he visto obligado a estudiar magia arcana con una urgencia aterradora, sabiendo que mi misterioso benefactor espera grandes cosas de mí, y que el fracaso en mis estudios probablemente resultará en la pérdida de mi alma.",
+  "Fui un alquimista mediocre en el mejor de los casos. Mis pociones siempre se cuajaban, mis elixires sabían a barro y mis experimentos terminaban invariablemente en explosiones desastrosas que destruían mi laboratorio. Después de mi tercer desalojo, un mago investigador examinó los restos de mi taller. Me reveló que mis explosiones no eran producto de mala química, sino de una poderosa magia latente que se manifestaba de forma inestable a través de mis emociones. He abandonado los matraces y me he centrado en los grimorios, aprendiendo a canalizar esa energía explosiva en hechizos controlados, aunque todavía tengo una preocupante tendencia a causar daños colaterales.",
+  "Sufrí una extraña y debilitante enfermedad en mi infancia que me dejó postrado en cama durante más de una década. Mi única ventana al mundo y mi única compañía fueron los extensos libros de magia de mi difunto abuelo. Al no poder mover mi cuerpo, ejercité mi mente, memorizando cada runa, cada gesto y cada encantamiento hasta comprender la teoría mágica mejor que muchos archimagos. Cuando finalmente me recuperé milagrosamente, descubrí que la teoría se traducía perfectamente en práctica. Ahora, con un cuerpo sano y una mente rebosante de conocimiento arcano retenido durante años, estoy ansioso por experimentar todo lo que el mundo tiene para ofrecer."
 ];
 
+/**
+ * Equipo inicial estándar para la clase Mago.
+ */
 export const wizardEquipment = [
   "Libro de conjuros",
   "Foco Arcano (Varita de madera de tejo)",
@@ -181,6 +190,9 @@ export const wizardEquipment = [
   "Ropajes de viajero"
 ];
 
+/**
+ * Lista de baratijas (trinkets) curiosas y misteriosas para añadir sabor narrativo al personaje.
+ */
 export const trinkets = [
   "Una mano de goblin momificada",
   "Un trozo de cristal que brilla débilmente a la luz de la luna",
@@ -214,6 +226,9 @@ export const trinkets = [
   "Una pequeña campana de plata sin badajo"
 ];
 
+/**
+ * Lista completa de habilidades disponibles en D&D 2024.
+ */
 export const allSkills = [
   "Acrobacias", "Trato con Animales", "Arcanos", "Atletismo", "Engaño", 
   "Historia", "Perspicacia", "Intimidación", "Investigación", "Medicina", 
@@ -221,13 +236,22 @@ export const allSkills = [
   "Juego de Manos", "Sigilo", "Supervivencia"
 ];
 
+/**
+ * Rasgos raciales específicos para la raza Humana.
+ */
 export const humanTraits = [
   "Ingenioso (Resourceful): Ganas Inspiración Heroica tras un descanso largo.",
   "Versatilidad de Habilidades: Competencia en una habilidad adicional."
 ];
 
+/**
+ * Arreglo estándar de puntuaciones de características para la creación de personajes.
+ */
 export const standardArray = [15, 14, 13, 12, 10, 8];
 
+/**
+ * Progresión de rasgos de clase del Mago por nivel según D&D 2024.
+ */
 export const wizardFeaturesByLevel: Record<number, string[]> = {
   1: [
     "Lanzamiento de Conjuros (Spellcasting)", 
@@ -294,6 +318,11 @@ export const wizardFeaturesByLevel: Record<number, string[]> = {
   ]
 };
 
+/**
+ * Mezcla un arreglo de forma aleatoria usando el algoritmo de Fisher-Yates.
+ * @param array El arreglo a mezclar.
+ * @returns Un nuevo arreglo con los elementos mezclados.
+ */
 function shuffle<T>(array: T[]): T[] {
   const newArray = [...array];
   for (let i = newArray.length - 1; i > 0; i--) {
@@ -303,6 +332,10 @@ function shuffle<T>(array: T[]): T[] {
   return newArray;
 }
 
+/**
+ * Lista de subclases (Escuelas de Magia) disponibles para el Mago.
+ * Incluye las 4 básicas de 2024 y las opciones de legado (Legacy).
+ */
 export const wizardSubclasses = [
   "Abjurador (Abjuration)",
   "Adivinador (Divination)",
@@ -320,6 +353,11 @@ export const wizardSubclasses = [
   "Graviturgo (Graviturgy) - Legado"
 ];
 
+/**
+ * Genera un personaje Mago de nivel 1 con estadísticas, trasfondo, hechizos y equipo aleatorios
+ * basados en las reglas de D&D 2024.
+ * @returns Un objeto que representa la ficha completa del personaje.
+ */
 export function generateWizard() {
   const bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
   const feat = bg.feat;

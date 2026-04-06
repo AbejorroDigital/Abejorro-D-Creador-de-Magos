@@ -4,6 +4,10 @@ import { Printer, RefreshCw, Download } from 'lucide-react';
 // @ts-ignore
 import html2pdf from 'html2pdf.js';
 
+/**
+ * Componente principal de la aplicación.
+ * Renderiza la ficha de personaje interactiva del Mago y maneja toda la lógica de estado.
+ */
 export default function App() {
   const [char, setChar] = useState<any>(null);
 
@@ -13,10 +17,21 @@ export default function App() {
 
   if (!char) return <div className="min-h-screen bg-slate-950 text-slate-200 flex items-center justify-center">Cargando...</div>;
 
+  /**
+   * Actualiza un campo de texto o número simple en el estado del personaje.
+   * @param field El nombre de la propiedad a actualizar.
+   * @param value El nuevo valor.
+   */
   const updateChar = (field: string, value: any) => {
     setChar((prev: any) => ({ ...prev, [field]: value }));
   };
 
+  /**
+   * Actualiza un elemento específico dentro de un arreglo en el estado del personaje (ej. equipo, habilidades).
+   * @param field El nombre de la propiedad tipo arreglo.
+   * @param index El índice del elemento a modificar.
+   * @param value El nuevo valor.
+   */
   const updateArray = (field: string, index: number, value: string) => {
     setChar((prev: any) => {
       const newArray = [...prev[field]];
@@ -25,6 +40,12 @@ export default function App() {
     });
   };
 
+  /**
+   * Actualiza el nombre de un conjuro en el libro de conjuros.
+   * @param level El nivel del conjuro (0-9).
+   * @param index El índice del conjuro dentro de ese nivel.
+   * @param value El nuevo nombre del conjuro.
+   */
   const updateSpell = (level: number, index: number, value: string) => {
     setChar((prev: any) => {
       const newSpells = { ...prev.spells };
@@ -34,6 +55,10 @@ export default function App() {
     });
   };
 
+  /**
+   * Añade un nuevo espacio vacío para un conjuro en un nivel específico.
+   * @param level El nivel del conjuro donde se añadirá el espacio.
+   */
   const addSpell = (level: number) => {
     setChar((prev: any) => {
       const newSpells = { ...prev.spells };
@@ -42,6 +67,11 @@ export default function App() {
     });
   };
 
+  /**
+   * Elimina un conjuro específico de la lista de un nivel y lo quita de los preparados si estaba allí.
+   * @param level El nivel del conjuro.
+   * @param index El índice del conjuro a eliminar.
+   */
   const removeSpell = (level: number, index: number) => {
     setChar((prev: any) => {
       const newSpells = { ...prev.spells };
@@ -54,6 +84,13 @@ export default function App() {
     });
   };
 
+  /**
+   * Maneja el cambio de nivel del personaje.
+   * Recalcula automáticamente el Bonificador de Competencia (PB), Puntos de Golpe (HP),
+   * Iniciativa, CD de Salvación de Conjuros y Ataque de Conjuro.
+   * También actualiza los rasgos de clase disponibles según el nuevo nivel.
+   * @param e El evento del input numérico.
+   */
   const handleLevelChange = (e: any) => {
     let newLevel = parseInt(e.target.value) || 1;
     if (newLevel < 1) newLevel = 1;
@@ -95,6 +132,12 @@ export default function App() {
     });
   };
 
+  /**
+   * Actualiza una puntuación de característica (Fuerza, Destreza, etc.) y recalcula
+   * las estadísticas derivadas (CA, Iniciativa, PG, CD de Conjuros).
+   * @param stat El nombre de la característica (ej. 'int', 'dex').
+   * @param value El nuevo valor de la característica.
+   */
   const updateStat = (stat: string, value: number) => {
     setChar((prev: any) => {
       const updated = { ...prev, [stat]: value };
@@ -118,10 +161,18 @@ export default function App() {
     });
   };
 
+  /**
+   * Dispara la función de impresión nativa del navegador.
+   * La hoja de estilos CSS oculta los elementos con clase 'no-print' durante la impresión.
+   */
   const handlePrint = () => {
     window.print();
   };
 
+  /**
+   * Genera y descarga un archivo PDF de la ficha de personaje.
+   * Utiliza la librería html2pdf.js para capturar el elemento con id 'character-sheet'.
+   */
   const handleDownloadPDF = () => {
     const element = document.getElementById('character-sheet');
     if (!element) return;
@@ -137,12 +188,26 @@ export default function App() {
     html2pdf().set(opt).from(element).save();
   };
 
+  /**
+   * Genera un personaje completamente nuevo y reemplaza el estado actual.
+   */
   const handleGenerate = () => {
     setChar(generateWizard());
   };
 
+  /**
+   * Calcula el modificador de una característica según las reglas de D&D.
+   * @param score La puntuación de la característica (ej. 15).
+   * @returns El modificador (ej. +2).
+   */
   const calcMod = (score: number) => Math.floor((score - 10) / 2);
 
+  /**
+   * Obtiene el número máximo de conjuros que el mago puede preparar según su nivel
+   * (Basado en la tabla oficial del Mago de D&D 2024).
+   * @param level El nivel actual del mago.
+   * @returns El número de conjuros que puede preparar.
+   */
   const getPreparedSpellsCount = (level: number) => {
     // 2024 PHB Wizard Prepared Spells table
     const table = [0, 4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 16, 17, 17, 18, 18, 19, 20, 21, 22];
@@ -475,6 +540,11 @@ export default function App() {
         </div>
 
       </main>
+
+      {/* Footer */}
+      <footer className="max-w-5xl mx-auto mt-8 text-center text-stone-500 text-sm no-print">
+        Desarrollado por <a href="http://abejorro-digital.rf.gd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline font-bold">Abejorro Digital</a> - 2026
+      </footer>
     </div>
   );
 }
